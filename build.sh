@@ -3,7 +3,10 @@
 build() {
     mkdir -p rxvt-unicode/build
     pushd rxvt-unicode/build
-    ../configure --prefix=/usr/local --enable-everything
+    ../configure \
+        --prefix=/usr/local \
+        --enable-everything \
+        --enable-256-color
     make -j4
     sudo make install
     popd

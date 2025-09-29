@@ -1964,14 +1964,6 @@ rxvt_term::button_press (XButtonEvent &ev)
                 MEvent.button = Button1;
                 break;
 
-              case Button3:
-                if (MEvent.button == Button3 && clickintime)
-                  selection_rotate (ev.x, ev.y);
-                else
-                  selection_extend (ev.x, ev.y, 1);
-
-                MEvent.button = Button3;
-                break;
             }
         }
 
@@ -2075,33 +2067,6 @@ rxvt_term::button_press (XButtonEvent &ev)
                     csrO = ev.y - scrollBar.top;
                   /* FALLTHROUGH */
 
-                case Button3:
-                  if (scrollBar.style != SB_STYLE_XTERM)
-                    {
-                      if (scrollBar.above_slider (ev.y))
-# ifdef RXVT_SCROLL_FULL
-                        scr_page (UP, nrow - 1);
-# else
-                        scr_page (UP, nrow / 4);
-# endif
-                      else if (scrollBar.below_slider (ev.y))
-# ifdef RXVT_SCROLL_FULL
-                        scr_page (DN, nrow - 1);
-# else
-                        scr_page (DN, nrow / 4);
-# endif
-                      else
-                        scrollBar.state = SB_STATE_MOTION;
-                    }
-                  else
-                    {
-                      scr_page ((ev.button == Button1 ? DN : UP),
-                                (nrow
-                                 * scrollBar.position (ev.y)
-                                 / scrollBar.size ()));
-                    }
-
-                  break;
               }
         }
 
@@ -2175,11 +2140,10 @@ rxvt_term::button_release (XButtonEvent &ev)
       switch (ev.button)
         {
           case Button1:
-          case Button3:
             selection_make (ev.time);
             break;
 
-          case Button2:
+          case Button3:
             if (IN_RANGE_EXC (ev.x, 0, vt_width) && IN_RANGE_EXC (ev.y, 0, vt_height)) // inside window?
               selection_request (ev.time, ev.state & ModMetaMask ? Sel_Clipboard : Sel_Primary);
             break;

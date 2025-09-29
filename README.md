@@ -11,7 +11,7 @@ README
 ## Build depends
 
 ```
-$ sudo apt-get install libperl-dev libptytty-dev
+$ sudo apt install libperl-dev libptytty-dev
 ```
 
 ## Build rxvt-unicode

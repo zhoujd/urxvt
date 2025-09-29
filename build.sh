@@ -1,5 +1,11 @@
 #!/bin/bash
 
+dep() {
+    sudo apt install -y \
+         libperl-dev libptytty-dev
+    echo "Install depends Done"
+}
+
 build() {
     mkdir -p rxvt-unicode/build
     pushd rxvt-unicode/build
@@ -19,6 +25,9 @@ clean() {
 }
 
 case $1 in
+    dep|-d )
+        dep
+        ;;
     build|-b )
         build
         ;;
@@ -26,6 +35,6 @@ case $1 in
         clean
         ;;
     * )
-        echo "Usage $(basename $0) {build|-b|clean|-c}"
+        echo "Usage $(basename $0) {dep|-d|build|-b|clean|-c}"
         ;;
 esac
